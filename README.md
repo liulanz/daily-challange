@@ -3,5 +3,5 @@
 2021-6-29. [Max Consecutive Ones III (Sliding Window) ](./code/2020-6-29.md)<br/>
 2021-6-30. [Lowest Common Ancestor of a Binary Tree (Tree) ](./code/2021-6-30.md)<br/>
 
-## JULY
+## July
 2021-07-01. [Gray Code ](./code/2021-07-01.md)<br/>
