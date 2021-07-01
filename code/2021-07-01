@@ -1,0 +1,108 @@
+```
+
+
+
+
+# [Gray Code](https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/608/week-1-july-1st-july-7th/3799/)
+
+
+
+
+#### 题意：
+> An  **n-bit gray code sequence**  is a sequence of  `2n`  integers where: <br/>
+>   Every integer is in the  **inclusive**  range  `[0, 2n  - 1]`,<br/>
+>   The first integer is  `0`,<br/>
+>   An integer appears  **no more than once**  in the sequence,<br/>
+>  The binary representation of every pair of  **adjacent**  integers differs by  **exactly one bit**, and<br/>
+>   The binary representation of the  **first**  and  **last**  integers differs by  **exactly one bit**.<br/>
+> Given an integer  `n`, return  _any valid  **n-bit gray code sequence**_.
+
+
+
+
+
+### 思路：
+1. 观察
+
+```
+n=1 base case
+0
+1
+
+n=2
+00
+01
+1x =>11
+1x =>10
+
+n=3
+0000
+0001
+0011
+0010
+
+1xxx =>1010
+1xxx =>1011
+1xxx =>1001
+1xxx =>1000
+
+```
+
+
+
+### :bulb:代码 C++：
+```
+class Solution {
+public:
+    vector<int> grayCode(int n) {
+        vector<int> res = {0, 1};
+        for(int i = 2;i <= n; i++){
+            int size = res.size();
+            int firstBit = (1 << (i - 1));
+            for(int j = size - 1;j >= 0; j--){
+                res.push_back(res[j] + firstBit);
+            }
+        }
+        return res;
+    }
+};
+```
+
+### :bulb:代码 Java：
+```
+class Solution {
+    public List<Integer> grayCode(int n) {
+        List<Integer> res = new ArrayList<>();
+        res.add(0);
+        res.add(1);
+        for(int i = 2; i <= n; i++){
+            int firstBit = (1 << (i - 1));
+            int size = res.size();
+            for(int j = size - 1; j >= 0; j--){
+                res.add(firstBit + res.get(j));
+            }
+        }
+        return res;
+    }
+}
+
+```
+
+### :bulb:代码 Go：
+```
+
+```
+
+#### 空间复杂度和时间复杂度：
+  - 时间复杂度：O(2^n)
+  - 空间复杂度：O(2^n)
+<br/><br/>
+
+
+
+
+
+
+
+
+```
