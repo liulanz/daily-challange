@@ -5,4 +5,5 @@
 
 ## July
 2021-07-01. [Gray Code ](./code/2021-07-01.md)<br/>
-2021-07-01. [Find K Closest Elements ](./code/2021-07-02.md)<br/>
+2021-07-02. [Find K Closest Elements ](./code/2021-07-02.md)<br/>
+2021-07-03. Skip<br/>
