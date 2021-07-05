@@ -8,3 +8,4 @@
 2021-07-02. [Find K Closest Elements ](./code/2021-07-02.md)<br/>
 2021-07-03. Skip<br/>
 2021-07-04. [Count Vowels Permutation ](./code/2021-07-04.md)<br/>
+2021-07-05. [Reshape the Matrix ](./code/2021-07-05.md)<br/>
