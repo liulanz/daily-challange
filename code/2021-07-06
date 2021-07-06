@@ -1,0 +1,109 @@
+
+
+
+
+# [Reduce Array Size to The Half](https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/608/week-1-july-1st-july-7th/3804/)
+
+
+
+
+#### 题意：
+> Given an array  `arr`. You can choose a set of integers and remove all the occurrences of these integers in the array.
+Return  _the minimum size of the set_  so that  **at least**  half of the integers of the array are removed.
+
+
+
+
+
+### 思路：
+1. 先用map 统计每个数字出现的次数<br/><br/>
+2. 把频率排序，我们从最大的频率开始移除，如果够一半的时候，break<br/><br/>
+
+
+
+
+
+
+
+### :bulb:代码 C++ ：
+```c++
+class Solution {
+public:
+    int minSetSize(vector<int>& A) {
+        unordered_map<int, int>f;
+        for(int i : A){
+            f[i]++;
+        }
+        
+        vector<int>cnts;
+        for(auto it = f.begin(); it != f.end(); it++){
+            cnts.push_back(it -> second);
+        }
+        
+        sort(cnts.begin(), cnts.end());
+        int totalRemove = 0;
+        int res = 0;
+        for(int i = cnts.size() - 1; i >= 0; i--){
+            totalRemove += cnts[i];
+            res++;
+            if(totalRemove * 2 >= A.size()){
+                break;
+            }
+        }
+        return res;
+    }
+};
+```
+
+### :bulb:代码 Java：
+```java
+class Solution {
+    public int minSetSize(int[] A) {
+        Map<Integer,Integer>f = new HashMap<>();
+        for(int i : A){
+            if(!f.containsKey(i)){
+                f.put(i, 1);
+            }
+            else{
+                f.put(i, f.get(i) + 1);
+            }
+        }
+        
+        List<Integer>cnts = new ArrayList<>();
+        for(Integer key : f.keySet()){
+            cnts.add(f.get(key));
+        }
+        
+        Collections.sort(cnts);
+        int totalRemove = 0;
+        int res = 0;
+        
+        for(int i = cnts.size() - 1; i >= 0; i--){
+            totalRemove += cnts.get(i);
+            res++;
+            if(totalRemove * 2 >= A.length){
+                break;
+            }
+        }
+        
+        return res;
+    }
+}
+```
+
+### :bulb:代码 Go：
+```go
+
+```
+
+#### 空间复杂度和时间复杂度：
+  - 时间复杂度：O(n log n)
+  - 空间复杂度：O(n)
+<br/><br/>
+
+
+
+
+
+
+
