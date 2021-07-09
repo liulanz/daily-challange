@@ -1,0 +1,107 @@
+
+
+
+
+# [Longest Increasing Subsequence](https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/609/week-2-july-8th-july-14th/3808/)
+
+
+
+
+#### 题意：
+> Longest Increasing Subsequence
+
+
+
+
+
+### 思路：
+1. dp<br/><br/>
+2. Define dp[i] 是以A[i] 为结尾的最长subsequence <br/><br/>
+3. 如果当前的subsequence 以A[i] 结尾，他前面可以跟的是 A[0 : i - 1] 中小于A[i] 的数。 ***dp[i] = max(dp[j] where A[j] < A[i])*** 0 <= j <=i - 1
+
+
+
+
+
+
+
+### :bulb:代码 C++ ：
+```c++
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& A) {
+        //dp[i] : the longest subsequence end with A[i]
+        int n = A.size();
+        vector<int>dp(n);
+        int res = 0;
+        
+        for(int i = 0; i < A.size(); i++){
+            int mx = 0;
+            for(int j = i - 1; j >=0; j--){
+                if(A[j] < A[i]){
+                    mx = max(mx, dp[j]);
+                }
+            }
+            dp[i] = 1 + mx;
+            res = max(res, dp[i]);
+        }
+        
+        return res;
+    }
+};
+
+```
+
+### :bulb:代码 Java：
+```java
+class Solution {
+    public int lengthOfLIS(int[] A) {
+        int dp[] = new int[A.length];
+        int res = 0;
+        for(int i = 0;i < A.length; i++){
+            int mx = 0;
+            for(int j = 0; j <= i - 1; j++){
+                if(A[i] > A[j]){
+                    mx = Math.max(mx, dp[j]);
+                }
+            }
+            dp[i] = 1 + mx;
+            res = Math.max(res, dp[i]);
+        }
+        return res;
+    }
+}
+```
+
+### :bulb:代码 Go：
+```go
+func lengthOfLIS(A []int) int {
+    res := 0
+    dp := make([]int, len(A))
+    for i := 0; i < len(A); i++{
+        mx := 0
+        for j := 0; j < i; j++{
+            if A[j] < A[i] && dp[j] > mx{
+                mx = dp[j]
+            }
+        }
+        dp[i] = 1 + mx
+        if dp[i] > res{
+            res = dp[i]
+        }
+    }
+    return res
+}
+```
+
+#### 空间复杂度和时间复杂度：
+  - 时间复杂度：O(n m)
+  - 空间复杂度：O(n m)
+<br/><br/>
+
+
+
+
+
+
+
